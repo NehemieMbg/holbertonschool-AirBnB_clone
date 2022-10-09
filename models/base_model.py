@@ -12,9 +12,8 @@ class BaseModel:
         """ Public instance attributes:"""
         # Assign id with an uuid string.
         self.id = str(uuid.uuid4())
-        # datetime object: current datetime when created
+        # datetime object: current datetime when created & updated
         self.created_at = datetime.now()
-        # datetime objec: current datetime when updated
         self.update_at = datetime.now()
 
     # Prints a string representation of the class object
@@ -30,17 +29,12 @@ class BaseModel:
     def to_dict(self):
         """returns a dictionary containing all keys/values
         of __dict__ of the instance"""
-        # creating a dic with __class as a key__
-        # & the class name as its value
+        # new dictionary
         dictionary = {"__class__": self.__class__.__name__}
-        # looping through dict with items funciton to acces
-        # the key and the value
+        # loop in dict to acces the key and value
         for key, value in self.__dict__.items():
-            if key == "created_at":
-                # converting the value if key is created_at
-                dictionary[key] = value.isoformat()
-            elif key == "updated_at":
-                # converting the value if key is updated_at
+            # converting the value if key is created_at or updated_at
+            if key in ("created_at", "updated_at"):
                 dictionary[key] = value.isoformat()
             else:
                 dictionary[key] = value
