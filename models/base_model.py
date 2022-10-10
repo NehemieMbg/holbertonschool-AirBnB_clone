@@ -10,11 +10,11 @@ class BaseModel:
 
     def __init__(self):
         """ Public instance attributes:"""
-        # Assign id with an uuid string.
-        self.id = str(uuid.uuid4())
         # datetime object: current datetime when created & updated
         self.created_at = datetime.now()
         self.update_at = datetime.now()
+        # Assign id with an uuid string.
+        self.id = str(uuid.uuid4())
 
     # Prints a string representation of the class object
     def __str__(self):
