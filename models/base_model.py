@@ -1,19 +1,25 @@
 #!/usr/bin/python3
 import uuid
-from datetime import date, datetime
+from datetime import datetime
 
 
 class BaseModel:
-    # initalazing current datetime to an attribute
-    now = datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f")
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """ Public instance attributes:"""
         # datetime object: current datetime when created & updated
         self.created_at = datetime.now()
         self.update_at = datetime.now()
         # Assign id with an uuid string.
         self.id = str(uuid.uuid4())
+
+        if kwargs:
+            for key, value in kwargs.items():
+                if key in ["created_at", "updated_at"]:
+                    value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                    setattr(self, key, value)
+                elif key is not "__class__":
+                    setattr(self, key, value)
 
     # Prints a string representation of the class object
     def __str__(self):
