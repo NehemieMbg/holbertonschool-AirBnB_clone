@@ -18,7 +18,7 @@ class BaseModel:
                 if key in ["created_at", "updated_at"]:
                     value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                     setattr(self, key, value)
-                elif key is not "__class__":
+                elif key != "__class__":
                     setattr(self, key, value)
 
     # Prints a string representation of the class object
