@@ -9,7 +9,7 @@ class BaseModel:
         """ Public instance attributes:"""
         # datetime object: current datetime when created & updated
         self.created_at = datetime.now()
-        self.update_at = datetime.now()
+        self.updated_at = datetime.now()
         # Assign id with an uuid string.
         self.id = str(uuid.uuid4())
 
