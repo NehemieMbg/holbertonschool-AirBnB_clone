@@ -35,7 +35,7 @@ class BaseModel:
         for key, value in self.__dict__.items():
             # converting the value if key is created_at or updated_at
             if key in ("created_at", "updated_at"):
-                dictionary[key] = value.isoformat()
+                dictionary[key] = value.strftime("%Y-%m-%dT%H:%M:%S.%f")
             else:
                 dictionary[key] = value
         return dictionary
