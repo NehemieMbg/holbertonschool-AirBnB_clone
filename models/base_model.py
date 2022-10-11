@@ -13,6 +13,7 @@ class BaseModel:
         self.updated_at = datetime.now()
         # Assign id with an uuid string.
         self.id = str(uuid.uuid4())
+        models.storage.new(self)
 
         if kwargs:
             for key, value in kwargs.items():
@@ -21,7 +22,6 @@ class BaseModel:
                     setattr(self, key, value)
                 elif key != "__class__":
                     setattr(self, key, value)
-            models.storage.new(self)
 
     # Prints a string representation of the class object
     def __str__(self):
