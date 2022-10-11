@@ -6,7 +6,9 @@ from models.base_model import BaseModel
 class FileStorage:
     def __init__(self):
         """Private class attribute"""
+        # Path of the file
         self.__file_path = "file.json"
+        # Empty dictionary
         self.__objects = {}
 
     def all(self):
@@ -15,8 +17,7 @@ class FileStorage:
 
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""
-        key = "{}.{}".format(obj.__class__.__name__, obj.id)
-        self.__objects[key] = obj
+        self.__objects.update({f"{obj.__class__.__name__}.{obj.id}":obj)
 
     def save(self):
         """serializes __objects to the JSON file"""
@@ -32,6 +33,8 @@ class FileStorage:
             with open(self.__file_path, "r+") as data:
                 jsonData = json.load(data)
             for key, value in jsonData.items():
+                # eval function to construct an object
                 self.__object[key] = eval(value['__class__'](**value))
+        # Get all exceptions possible
         except Exception:
             pass
