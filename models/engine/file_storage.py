@@ -1,45 +1,37 @@
 #!/usr/bin/python3
-"""Function giving the possibility to stores and 
-restores any objects created before"""
 import json
 from models.base_model import BaseModel
 
-class FileStorage:
-    """Storage class"""
 
+class FileStorage:
     def __init__(self):
-        """Init: FileStorage
-       Var:
-       """
-        self.__file_path = 'file.json'
+        """Private class attribute"""
+        self.__file_path = "file.json"
         self.__objects = {}
 
     def all(self):
-        """Returns dictionnary __objects"""
+        """returns the dictionary __objects"""
         return self.__objects
 
-    def new(self,obj):
-        """sets in __objects the obj 
-        with key <obj class name>.id"""
-        self.__objects.update({f"{obj.__class__.__name__}.{obj.id}":obj})
+    def new(self, obj):
+        """sets in __objects the obj with key <obj class name>.id"""
+        key = "{}.{}".format(obj.__class__.__name__, obj.id)
+        self.__objects[key] = obj
 
     def save(self):
-        """Serializes __objects to the JSON file"""
+        """serializes __objects to the JSON file"""
         serial_dict = {}
         for key in self.__objects.keys():
             serial_dict[key] = self.__objects[key].to_dict()
-        with open(self.__file_path, "w+") as write_file:
-            json.dump(serial_dict, write_file)
+        with open(self.__file_path, "w+") as jsonData:
+            json.dump(serial_dict, jsonData)
 
     def reload(self):
-        """deserializes the JSON file to
-        __objects (only if the JSON file"""
+        """deserializes the JSON file to __objects"""
         try:
             with open(self.__file_path, "r+") as data:
-                JSONdata = json.load(data)
-                for key, value in JSONdata.items():
-                    #Use eval because you wanna reconstruct an object
-                    self.__objects[key] = eval(value['__class__'])(**value)
-        #Get all exceptions possible
+                jsonData = json.load(data)
+            for key, value in jsonData.items():
+                self.__object[key] = eval(value['__class__'](**value))
         except Exception:
             pass
