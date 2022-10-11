@@ -13,6 +13,7 @@ class BaseModel:
         self.updated_at = datetime.now()
         # Assign id with an uuid string.
         self.id = str(uuid.uuid4())
+        models.storage.new(self)
 
         if kwargs:
             for key, value in kwargs.items():
@@ -31,6 +32,7 @@ class BaseModel:
         """updates the public instance attribute update at
         to the current datetime."""
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         """returns a dictionary containing all keys/values
