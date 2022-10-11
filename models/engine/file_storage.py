@@ -28,7 +28,7 @@ class FileStorage:
     def reload(self):
         """deserializes the JSON file to __objects"""
         try:
-            with open(slef.__file_path, "r") as data:
+            with open(slef.__file_path, "r+") as data:
                 jsonData = load(data)
             for key, value in jsonData.items():
                 self.__object[key] = eval(value['__class__'](**value))
