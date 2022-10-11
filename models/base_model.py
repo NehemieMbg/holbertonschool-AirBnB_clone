@@ -22,6 +22,7 @@ class BaseModel:
                     setattr(self, key, value)
                 elif key != "__class__":
                     setattr(self, key, value)
+            models.storage.new(self)
 
     # Prints a string representation of the class object
     def __str__(self):
