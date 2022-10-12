@@ -14,26 +14,15 @@ class HBNBCommand(cmd.Cmd):
     intro = "Type something!"
 
     def do_quit(self, inp):
-        """Exit the application"""
+        """
+        Exit the application
+        """
         return True
 
-    def help_quit(self):
-        """Provides help documentation for 'quit'"""
-        print('exit the application. Shrothand: x q Ctrl-D.')
-
-
-    def default(self, inp):
-        if inp == 'x' or inp == 'q':
-            return self.do_quit(inp)
-
-        print("Default: {}".format(inp))
-
-    do_EOF = do_quit
-    help_EOF = help_quit
-
-    def do_add(self, inp):
-        print("Adding '{}'".format(inp))
+    def do_EOF(self):
+        return True
 
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
+
