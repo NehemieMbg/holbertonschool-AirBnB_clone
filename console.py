@@ -10,8 +10,7 @@ import cmd
 
 class HBNBCommand(cmd.Cmd):
     """Command Interpreter"""
-    prompt = '(hbnb) '
-    intro = "Type something!"
+    prompt = '(hbnb)'
 
     def do_quit(self, inp):
         """
