@@ -31,8 +31,8 @@ class HBNBCommand(cmd.Cmd):
 
         print("Default: {}".format(inp))
 
-    do_EOF = do_exit
-    help_EOF = help_exit
+    do_EOF = do_quit
+    help_EOF = help_quit
 
     def do_add(self, inp):
         print("Adding '{}'".format(inp))
