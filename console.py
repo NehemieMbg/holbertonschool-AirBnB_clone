@@ -18,8 +18,8 @@ class HBNBCommand(cmd.Cmd):
         print("Bye")
         return True
 
-    def help_exit(self):
-        """Provides help documentation for 'exit'"""
+    def help_quit(self):
+        """Provides help documentation for 'quit'"""
         print('exit the application. Shrothand: x q Ctrl-D.')
 
     def help_add(slef):
