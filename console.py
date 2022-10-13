@@ -110,7 +110,6 @@ class HBNBCommand(cmd.Cmd):
             return False
         if len(parse) == 3:
             print("** value missing **")
-            print("----------DEBUGGING---------")
             return False
         if len(parse) == 4:
             name = f"{parse[0]}.{parse[1]}"
