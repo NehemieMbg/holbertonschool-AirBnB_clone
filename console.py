@@ -80,15 +80,16 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, inp):
         parse = inp.split()
-        if parse[0] not in self.classes:
+        if len(inp) > 0 and parse[0] not in self.classes:
             print("** class doesn't exist **")
-            return
         else:
             lst = []
             allDict = storage.all()
             for val in allDict.values():
-                if val.__class__.__name__ == parse[0]:
-                    lst.append(str(val))
+                if len(inp) > 0:
+                    lst.append(val.__str__())
+                else:
+                    lst.append(val.__str__())
             print(lst)
 
     def do_update(self, inp):
