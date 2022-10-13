@@ -102,6 +102,8 @@ class HBNBCommand(cmd.Cmd):
         if len(parse) == 1:
             print("** instance id missing **")
             return False
+        if f"{parse[0]}.{parse[1]}" not in storage.all().keys():
+            print("** no instance found **")
         if len(parse) == 2:
             print("** attribute name missing **")
             return False
