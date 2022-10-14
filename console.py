@@ -19,7 +19,15 @@ from models.review import Review
 class HBNBCommand(cmd.Cmd):
     """Command Interpreter"""
     prompt = '(hbnb) '
-    classes = {"BaseModel", "User"}
+    classes = {
+        "BaseModel",
+        "User",
+        "City",
+        "Place",
+        "Review",
+        "State",
+        "Amenity",
+        }
 
     def do_quit(self, inp):
         """
