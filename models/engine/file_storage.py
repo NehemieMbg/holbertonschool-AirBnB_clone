@@ -2,7 +2,6 @@
 import json
 from models.base_model import BaseModel
 from models.user import User
-from models.city import City
 
 
 class FileStorage:
@@ -38,6 +37,6 @@ class FileStorage:
                 for key, value in jsonData.items():
                     # eval function to reconstruct an object
                     self.__objects[key] = eval(value['__class__'])(**value)
-        #Get all exceptions possible
+        # Get all exceptions possible
         except Exception:
             pass
