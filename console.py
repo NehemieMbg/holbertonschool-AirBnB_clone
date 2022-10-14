@@ -42,7 +42,7 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         """Print an empty line"""
         pass
-    
+
     def do_create(self, inp):
         if len(inp) == 0:
             print("** class name missing **")
