@@ -8,12 +8,13 @@ It has interactive she with comman completition and history
 import cmd
 from models.base_model import BaseModel
 from models import storage
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
     """Command Interpreter"""
     prompt = '(hbnb) '
-    classes = {"BaseModel"}
+    classes = {"BaseModel", "User"}
 
     def do_quit(self, inp):
         """
