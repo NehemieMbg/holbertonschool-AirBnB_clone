@@ -68,6 +68,7 @@ h4 {
 	padding-top: 16px;
 	padding-bottom: 24px;
 	visibility: hidden;
+	position: relative;
 }
 
 .filters li {
